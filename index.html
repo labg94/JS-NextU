@@ -5,117 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="js\estudiante.js"></script>
-    
+    <script src="js\funciones.js"></script>
     <title>Document</title>
+    <link  rel="stylesheet" type="text/css" href="css\styles.css"/>
+
 </head>
 <body>
-    
-    <table id="tabla" style="">
-        <th>Codigo</th>
-        <th>Nombre</th>
-        <th>Nota</th>
-    </table>
 
-    <div id="mensajes"></div>
-    <br>
-    <button onclick="mostrarEstudiantes()">Mostrar Estudiantes</button>
-    <button onclick="calcularPromedio()">Calcular Promedio</button>
-    <button onclick="MayorNota()" >Mayor Nota</button>
-    <button onclick="MenorNota()" >Menor Nota</button>
-
-
-
-    <script>
-        var tabla = document.getElementById("tabla");
-        var estudiantes = new Array();
-        for(var i=1;i<11;i++){
-            var estudiante = new Estudiante(i,"Luis",i*2);
-            estudiantes[i-1]= estudiante      
-          }
+    <div id="contenedor">
+        <h2>Registro Estudiante</h2>
+        <div>
+            <input type="text" id="inCodigo" placeholder="Codigo">
+            <input type="text" id="inNombre" placeholder="Nombre">
+            <input type="text" id="inNota" placeholder="Nota">
+        </div>
         
-        
-        function mostrarEstudiantes(){
-            for (x in estudiantes) {
-            var trEstudiant = document.createElement("tr")
-            var tdCodigo = document.createElement("td")
-            var tdNombre = document.createElement("td")
-            var tdNota = document.createElement("td")
+        <table id="tabla">
+        </table>
 
-            tdCodigo.innerHTML= estudiantes[x].codigo
-            tdNombre.innerHTML= estudiantes[x].nombre
-            tdNota.innerHTML=estudiantes[x].nota
+        <div id="mensajes"></div>
+        <div id="botones">
+            <button onclick="registrar()">Registrar Estudiante</button>
+            <button onclick="calcularPromedio()">Calcular Promedio</button>
+            <button onclick="MayorNota()" >Mayor Nota</button>
+            <button onclick="MenorNota()" >Menor Nota</button>
+        </div>
+    </div>
 
-            trEstudiant.appendChild(tdCodigo)
-            trEstudiant.appendChild(tdNombre)
-            trEstudiant.appendChild(tdNota)
-            
-            trEstudiant.id= "estudiante"+estudiantes[x].codigo
-            tabla.appendChild(trEstudiant)
-            }
-        }
 
-        function calcularPromedio(){
-            var acumulador, contador, promedio;
-
-            contador = 0
-            acumulador = 0
-            promedio = 0
-            for(x in estudiantes){
-                acumulador += estudiantes[x].nota;
-                contador++;
-            }
-            try {
-                promedio = acumulador/contador 
-            } catch (error) {
-                alert("Hubo un error, aseguerese que exista al menos un estudiante")
-            }
-            var textPromedio = document.createElement("p")
-
-            textPromedio.innerHTML= "El promedio es "+promedio
-            textPromedio.style.backgroundColor = "lightslategray"
-            document.getElementById("mensajes").appendChild(textPromedio);
-            
-        }
-        
-        function Notas(){
-            var notas= new Array()
-            for(x in estudiantes){
-                    notas[x] = estudiantes[x].nota
-            }
-            return notas
-        }
-
-        function MayorNota(){
-            var notas = Notas();
-           for(x in estudiantes){
-                if (estudiantes[x].nota == Math.max(...notas)){
-                   ActualizarMenorMayor("green","mayor",estudiantes[x].nota)             
-                }
-            }
-        }
-
-        function MenorNota(){
-            var notas = Notas();
-           for(x in estudiantes){
-                if (estudiantes[x].nota == Math.min(...notas)){
-                    ActualizarMenorMayor("red","menor",estudiantes[x].nota) 
-                }
-            }
-        }
-
-        function ActualizarMenorMayor(color,valor,nota){
-            try {
-                document.getElementById("estudiante"+estudiantes[x].codigo).style.backgroundColor= color
-            } catch (error) {
-                console.log("No cambia el color, porque no se ha listado los estudiantes")
-            }
-            var textNota =  document.createElement("p");
-            textNota.innerHTML = "La "+valor+" nota es " + nota
-            
-            document.getElementById("mensajes").appendChild(textNota);
-            textNota.style.backgroundColor= color
-        }
-
-    </script>
 </body>
 </html>

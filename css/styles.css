@@ -1,0 +1,61 @@
+body{
+    background: #2196f3;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#contenedor{
+    background: #7b1fa2;
+    width: 80%;
+    height: 80%;
+    margin: 5%;
+    text-align: center;
+    padding: 5%;
+    color: #fff;
+    border-radius: 20px;
+}
+
+
+p,.mensajes,#tabla,#botones{
+    width:50%;
+    margin: 1% 25%; 
+}
+
+.mensajes{
+    height: 90px;
+}
+
+p,input{
+    border-radius: 5px;
+    border: 0px;
+    text-align: center;
+}
+
+#tabla{
+    border-radius: 5px;
+    background: white;
+}
+
+tr{
+    background: #2195f2;
+    color: #000;
+}
+
+th{
+    background: #0068bf;
+}
+
+button{
+    width: 40%;
+    height: 100%;
+    background: #6ec6ff;
+    border: 3px #6ec6ff solid;
+    border-radius: 5px;
+    text-align: center;
+    margin: 1%;
+    transition-duration: 0.4s;
+}
+
+button:hover{
+    background: #fff;
+    border: 3px #6ec6ff solid;
+}
